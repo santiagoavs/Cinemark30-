@@ -1,4 +1,4 @@
-import customersModel from "../models/customers.js";
+import clientsModel from "../models/clients.js";
 import employeesModel from "../models/employee.js";
 import bcryptjs from "bcryptjs";
 import jsonwebtoken from "jsonwebtoken";
@@ -23,8 +23,8 @@ loginController.login = async (req, res) => {
       userType = "employee";
 
       if (!userFound) {
-        userFound = await customersModel.findOne({ email });
-        userType = "customer";
+        userFound = await clientsModel.findOne({ email });
+        userType = "client";
       }
     }
 
