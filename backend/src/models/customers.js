@@ -1,11 +1,3 @@
-/*
-    Campos:
-        nombre
-        descripcion
-        precio
-        stock
-*/
-
 import { Schema, model } from "mongoose";
 
 const customersSchema = new Schema(

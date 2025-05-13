@@ -1,7 +1,5 @@
 import dotenv from "dotenv";
 
-//Ejecutar la libreria dotenv
-// para acceder al archivo .env
 dotenv.config();
 
 export const config = {

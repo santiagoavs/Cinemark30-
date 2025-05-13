@@ -1,12 +1,6 @@
 import nodemailer from "nodemailer";
 import { config } from "../config.js";
 
-//Hacemos los tres pasos para enviar correos
-//1- ¿Quien lo envia?
-//2- ¿Quien lo recibe?
-//3- Envío del correo
-
-//1- Transporter = ¿Quien lo envia?
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
@@ -17,11 +11,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-//2- ¿Quien lo recibe?
 const sendMail = async (to, subject, text, html) => {
   try {
     const info = await transporter.sendMail({
-      from: '"Soporte Z Gas" <ricardo.mayorga.ck@gmail.com>"',
+      from: '"Soporte Cinemark" <santiago4v5@gmail.com>"',
       to,
       subject,
       text,
@@ -33,7 +26,6 @@ const sendMail = async (to, subject, text, html) => {
   }
 };
 
-//3- Funcion para generar el HTML del correo que vamos a enviar
 const HTMLRecoveryEmail = (code) => {
   return `
         <!DOCTYPE html>
