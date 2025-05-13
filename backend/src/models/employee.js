@@ -7,17 +7,13 @@ const employeeSchema = new Schema(
       require: true,
     },
 
-    lastName: {
-      type: String,
-    },
-
-    birthday: {
-      type: Date,
-      require: true,
-    },
-
     email: {
       type: String,
+    },
+
+    telephone: {
+      type: String,
+      require: true,
     },
 
     address: {
@@ -28,25 +24,21 @@ const employeeSchema = new Schema(
       type: String,
       require: true,
     },
+
+    position: {
+      type: String,
+    },
+    
     hireDate: {
-      type: String,
+      type: Date,
     },
 
-    telephone: {
-      type: String,
-      require: true,
+    salary: {
+      type: Number,
     },
 
-    dui: {
-      type: String,
-      require: true,
-    },
-    isVerified: {
+    isActive: {
       type: Boolean,
-    },
-    issnumber: {
-      type: String,
-      require: true,
     },
   },
   {
