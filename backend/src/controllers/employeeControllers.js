@@ -7,38 +7,30 @@ employeeController.getemployee = async (req, res) => {
 };
 
 employeeController.createemployee = async (req, res) => {
-  const { name, lastName, birthday, email, password, telephone, dui, issNumber, hireDate } = req.body;
-  const newemployee= new employeeModel({ name, lastName, birthday, email, password, telephone, dui, issNumber, hireDate });
+  const { name, email, telephone, password, address, position, hireDate, salary, isActive } = req.body;
+  const newemployee= new employeeModel({ name, email, telephone, password, address, position, hireDate, salary, isActive });
   await newemployee.save();
-  res.json({ message: "employee save" });
+  res.json({ message: "employee saved" });
 };
 
 employeeController.deleteemployee = async (req, res) => {
 const deletedemployee = await employeeModel.findByIdAndDelete(req.params.id);
   if (!deletedemployee) {
-    return res.status(404).json({ message: "employee dont find" });
+    return res.status(404).json({ message: "Couldn't find the employee" });
   }
   res.json({ message: "employee deleted" });
 };
 
 employeeController.updateemployee = async (req, res) => {
-  const { name, lastName, birthday, email, password, telephone, dui, issNumber, hireDate  } = req.body;
+  const { name, email, telephone, password, address, position, hireDate, salary, isActive  } = req.body;
   await employeeModel.findByIdAndUpdate(
     req.params.id,
     {
-        name, 
-        lastName,
-         birthday, 
-         email,
-          password, 
-          telephone,
-           dui, 
-           issNumber, 
-           hireDate  
+        name, email, telephone, password, address, position, hireDate, salary, isActive  
     },
     { new: true }
   );
-  res.json({ message: "employee update" });
+  res.json({ message: "employee updated" });
 };
 
 export default employeeController;

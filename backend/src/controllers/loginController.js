@@ -36,7 +36,7 @@ loginController.login = async (req, res) => {
     if (userType !== "admin") {
       const isMatch = await bcryptjs.compare(password, userFound.password);
       if (!isMatch) {
-        console.log("no matchea");
+        console.log("no coincide");
         return res.json({ message: "Contraseña incorrecta" });
       }
     }

@@ -45,7 +45,7 @@ passwordRecoveryController.requestCode = async (req, res) => {
       HTMLRecoveryEmail(code)
     );
 
-    res.json({ message: "Verification code send" });
+    res.json({ message: "Verification code sent" });
   } catch (error) {}
 };
 
@@ -84,7 +84,7 @@ passwordRecoveryController.newPassword = async (req, res) => {
     const token = req.cookies.tokenRecoveryCode;
 
     if (!token) {
-      return res.json({ message: "Not token provided" });
+      return res.json({ message: "Not the token provided" });
     }
 
     const decoded = jsonwebtoken.verify(token, config.JWT.secret);

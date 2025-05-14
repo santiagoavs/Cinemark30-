@@ -7,15 +7,6 @@ const clientsSchema = new Schema(
       require: true,
     },
 
-    lastName: {
-      type: String,
-    },
-
-    birthday: {
-      type: Date,
-      require: true,
-    },
-
     email: {
       type: String,
     },
@@ -29,11 +20,11 @@ const clientsSchema = new Schema(
       require: true,
     },
 
-    dui: {
+    address: {
       type: String,
-      require: true,
     },
-    isVerified: {
+
+    isActive: {
       type: Boolean,
     },
   },

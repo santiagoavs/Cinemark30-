@@ -9,14 +9,7 @@ const registerClientsController = {};
 
 registerClientsController.register = async (req, res) => {
   const {
-    name,
-    lastName,
-    birthday,
-    email,
-    password,
-    telephone,
-    dui,
-    isVerified,
+    name, email, telephone, password, address, isActive
   } = req.body;
 
   try {
@@ -28,14 +21,7 @@ registerClientsController.register = async (req, res) => {
     const passwordHash = await bcryptjs.hash(password, 10);
 
     const newClient = new clientsModel({
-      name,
-      lastName,
-      birthday,
-      email,
-      password: passwordHash,
-      telephone,
-      dui: dui || null,
-      isVerified: isVerified || false,
+      name, email, telephone, password: passwordHash, address, isActive: isActive || false,
     });
 
     await newClient.save();
@@ -97,12 +83,12 @@ registerClientsController.verifyCodeEmail = async (req, res) => {
     }
 
     const client = await clientsModel.findOne({ email });
-    client.isVerified = true;
+    client.isActive = true;
     await client.save();
 
     res.clearCookie("verificationToken");
 
-    res.json({ message: "Email verified Successfuly" });
+    res.json({ message: "Email Active Successfuly" });
   } catch (error) {
     console.log("error" + error);
   }

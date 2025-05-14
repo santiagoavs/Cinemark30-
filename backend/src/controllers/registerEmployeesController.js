@@ -7,17 +7,7 @@ const registerEmployeesController = {};
 
 registerEmployeesController.register = async (req, res) => {
   const {
-    name,
-    lastName,
-    birthday,
-    email,
-    address,
-    password,
-    hireDate,
-    telephone,
-    dui,
-    isVerified,
-    issnumber,
+    name, email, telephone, password, address, position, hireDate, salary, isActive
   } = req.body;
 
   try {
@@ -29,17 +19,7 @@ registerEmployeesController.register = async (req, res) => {
     const passwordHash = await bcryptjs.hash(password, 10);
 
     const newEmployee = new EmployeeModel({
-      name,
-      lastName,
-      birthday,
-      email,
-      address,
-      password: passwordHash,
-      hireDate,
-      telephone,
-      dui,
-      isVerified,
-      issnumber,
+      name, email, telephone, password: passwordHash, address, position, hireDate, salary, isActive
     });
 
     await newEmployee.save();
